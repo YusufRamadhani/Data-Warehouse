@@ -21,7 +21,7 @@ Additional lib and tools
 * jupyterlab
 * pytest
 
-### What I'he learned
+### What I've learned
 
 1. How to Create database and dump some data to the database using docker-compose and command line (while building container)
 2. Extend and Customize the image especially airflow image that I heavily edit.
@@ -41,7 +41,7 @@ If you need additional or more customization, you could use `--build-arg`. Somet
 
 ```sh
 $ docker-compose build --build-arg ADDITIONAL_AIRFLOW_EXTRAS="apache-airflow-providers-apache-hive" \
-> --build-arg ADDITIONAL_DEV_APT_DEPS="git"
+ --build-arg ADDITIONAL_DEV_APT_DEPS="git"
 ```
 
 ### Initialize Environment
@@ -69,7 +69,7 @@ $ docker-compose up
 
 ### Cleaning up environment
 
-To stop and delete containers, volumesm and images.
+To stop and delete containers, volumes and images.
 
 ```
 $ docker-compose down --volume --rmi all
