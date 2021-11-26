@@ -33,15 +33,15 @@ Additional lib and tools
 Build your image first
 
 ```sh
-docker-compose build
+$ docker-compose build
 ```
 
 or you can use docker build command as usual. then edit docker-compose image to the image you just build.
 If you need additional or more customization, you could use `--build-arg`. Something like below
 
 ```sh
-docker-compose build --build-arg ADDITIONAL_AIRFLOW_EXTRAS="apache-airflow-providers-apache-hive" \
---build-arg ADDITIONAL_DEV_APT_DEPS="git"
+$ docker-compose build --build-arg ADDITIONAL_AIRFLOW_EXTRAS="apache-airflow-providers-apache-hive" \
+> --build-arg ADDITIONAL_DEV_APT_DEPS="git"
 ```
 
 ### Initialize Environment
@@ -49,9 +49,32 @@ docker-compose build --build-arg ADDITIONAL_AIRFLOW_EXTRAS="apache-airflow-provi
 You need to prepare the environment, i.e. create files and directory you needed, or initialize database. On Linux volumes that mounted to container using native Linux filesystem user and group permission. So you have to make sure the container and host have matching file permission.
 
 ```sh
-mkdir -p ./dags ./logs ./plugins 
-echo -e "AIRFLOW_UID=$(id -u)\nAIRFLOW_GID=0" > .env
+$ mkdir -p ./dags ./logs ./plugins 
+$ echo -e "AIRFLOW_UID=$(id -u)\nAIRFLOW_GID=0" > .env
 ```
+
+On all operating systems, you need to run database migrations and create the first user account. To do it, run.
+
+```
+$ docker-compose up airflow-init
+```
+
+### Running services
+
+Now you can start all services.
+
+```
+$ docker-compose up
+```
+
+### Cleaning up environment
+
+To stop and delete containers, volumesm and images.
+
+```
+$ docker-compose down --volume --rmi all
+```
+
 ## How to Use
 
 ## Using in vs code
