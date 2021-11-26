@@ -79,12 +79,12 @@ $ docker-compose down --volume --rmi all
 
 All services already run and you could access it in localhost like airflow webserver in port 8080.
 
-Airflow username: Airflow
-Airflow password: Airflow
+* Airflow username: Airflow
+* Airflow password: Airflow
 
-Postgres username: Airflow
-Postgres password: Airflow
-Postgres database(data source): pagila
+* Postgres username: Airflow
+* Postgres password: Airflow
+* Postgres database(data source): pagila
 
 For jupyterlab you should start from inside container.
 
