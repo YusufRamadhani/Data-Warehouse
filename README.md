@@ -25,13 +25,36 @@ Additional lib and tools
 
 1. How to Create database and dump some data to the database using docker-compose and command line (while building container)
 2. Extend and Customize the image especially airflow image that I heavily edit.
-3. 
+3. Tuning the airflow as I needed.
 
-## How to Install
+## Installation
+### Build the image 
 
-### How to Use
+Build your image first
 
-### Using in vs code
+```sh
+docker-compose build
+```
+
+or you can use docker build command as usual. then edit docker-compose image to the image you just build.
+If you need additional or more customization, you could use `--build-arg`. Something like below
+
+```sh
+docker-compose build --build-arg ADDITIONAL_AIRFLOW_EXTRAS="apache-airflow-providers-apache-hive" \
+--build-arg ADDITIONAL_DEV_APT_DEPS="git"
+```
+
+### Initialize Environment
+
+You need to prepare the environment, i.e. create files and directory you needed, or initialize database. On Linux volumes that mounted to container using native Linux filesystem user and group permission. So you have to make sure the container and host have matching file permission.
+
+```sh
+mkdir -p ./dags ./logs ./plugins 
+echo -e "AIRFLOW_UID=$(id -u)\nAIRFLOW_GID=0" > .env
+```
+## How to Use
+
+## Using in vs code
 
 
 ## Troubleshooting
